@@ -1,0 +1,23 @@
+AUTOMAÇÃO DA LISTA DE TELEFONES
+
+O programa reúne os arquivos baixados da Assertiva, Consulta Dados e Lemit em uma planilha de uma única aba, seguindo o modelo enviado. Os três blocos aparecem lado a lado, agrupados por plataforma, e cada telefone tem uma coluna FONTE com todas as plataformas em que aquele número aparece para o mesmo CNPJ.
+
+COMO USAR
+1. Instale o Python 3 para Windows, se ainda não estiver instalado.
+2. Abra o Prompt de Comando e execute: py -m pip install openpyxl
+3. Mantenha o arquivo “Modelo consolidacao.xlsx” na mesma pasta do programa.
+4. Dê dois cliques em “Executar consolidacao.bat”.
+5. Selecione os arquivos da Assertiva, Consulta Dados e Lemit nas janelas que aparecerem.
+6. Escolha onde salvar a planilha final.
+
+O modelo é fornecido junto com o programa. Ele conserva o formato do arquivo de referência e inclui cinco espaços para telefones da Lemit, conforme o formato de referência.
+
+REGRAS
+- Assertiva e Consulta Dados são associados pelo CNPJ. Na Lemit, os telefones seguem a ordem da lista-base indicada pelo modelo, pois os campos de identificação do CSV podem não corresponder aos telefones na mesma linha. Telefones iguais em empresas diferentes não são tratados como o mesmo contato.
+- A comparação remove espaços, parênteses, hífens e outros caracteres de formatação.
+- Valores curtos como “51” ou “118” não são tratados como telefones válidos.
+- No arquivo da Lemit, o DDD é combinado ao FONE.
+- As fontes são identificadas por CNPJ e telefone. Um número encontrado em mais de uma plataforma recebe todas as origens no campo FONTE.
+- O Excel da Consulta Dados é lido pela aba Enriquecimento. Se o nome da aba mudar, o programa procura outra aba com os campos necessários.
+
+Se preferir usar por comando, informe os quatro caminhos com --assertiva, --consulta, --lemit e --saida. Sem parâmetros, o programa abre as janelas de seleção.
